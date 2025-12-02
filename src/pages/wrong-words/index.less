@@ -1,0 +1,390 @@
+.wrong-words-page {
+  min-height: 100vh;
+  background: #f5f5f7;
+  padding-bottom: 60px;
+}
+
+// 头部
+.header {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.header-bg {
+  height: 240px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+}
+
+.header-content {
+  position: absolute;
+  bottom: -40px;
+  left: 40px;
+  right: 40px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.header-icon {
+  font-size: 56px;
+  margin-right: 20px;
+}
+
+.header-info {
+  flex: 1;
+}
+
+.header-title {
+  display: block;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.header-count {
+  display: block;
+  font-size: 26px;
+  color: #ff6b6b;
+}
+
+.review-btn {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  padding: 20px 32px;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4);
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.review-btn-text {
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+}
+
+// 单词列表
+.word-list {
+  padding: 60px 24px 24px;
+}
+
+.word-item {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border-left: 6px solid #ff6b6b;
+}
+
+.word-left {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.word-index {
+  width: 44px;
+  height: 44px;
+  background: #fff2f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  flex-shrink: 0;
+
+  text {
+    font-size: 22px;
+    color: #ff6b6b;
+    font-weight: 700;
+  }
+}
+
+.word-info {
+  flex: 1;
+}
+
+.word-header-row {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.word-text {
+  font-size: 34px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-right: 16px;
+}
+
+.word-phonetic {
+  font-size: 24px;
+  color: #999;
+}
+
+.word-meaning {
+  display: block;
+  font-size: 28px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.word-date {
+  font-size: 22px;
+  color: #bbb;
+}
+
+.remove-btn {
+  width: 56px;
+  height: 56px;
+  background: #fff2f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16px;
+
+  &:active {
+    background: #ffebe8;
+  }
+}
+
+.remove-icon {
+  font-size: 28px;
+  color: #ff6b6b;
+}
+
+// 空状态
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 48px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 100px;
+  margin-bottom: 32px;
+}
+
+.empty-title {
+  display: block;
+  font-size: 40px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+
+.empty-desc {
+  display: block;
+  font-size: 28px;
+  color: #999;
+  margin-bottom: 48px;
+}
+
+.go-study-btn {
+  background: linear-gradient(135deg, #52c41a 0%, #73d13d 100%);
+  padding: 24px 64px;
+  border-radius: 32px;
+  box-shadow: 0 8px 24px rgba(82, 196, 26, 0.3);
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.go-study-btn .btn-text {
+  font-size: 32px;
+  font-weight: 600;
+  color: #fff;
+}
+
+// 复习模式
+.review-mode {
+  background: linear-gradient(180deg, #ff6b6b 0%, #ee5a52 100%);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-top: env(safe-area-inset-top);
+}
+
+.back-btn {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.back-icon {
+  font-size: 36px;
+  color: #fff;
+}
+
+.review-progress {
+  font-size: 32px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.placeholder {
+  width: 60px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  margin-bottom: 48px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #fff;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.review-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 40px;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+  margin-bottom: 32px;
+}
+
+.review-word {
+  display: block;
+  font-size: 72px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.review-phonetic {
+  display: block;
+  font-size: 32px;
+  color: #ff6b6b;
+  margin-bottom: 40px;
+}
+
+.tap-hint {
+  padding: 24px 40px;
+  background: #f8f9ff;
+  border-radius: 20px;
+}
+
+.hint-text {
+  font-size: 28px;
+  color: #999;
+}
+
+.meaning-reveal {
+  width: 100%;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.divider {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, #ff6b6b 0%, #ee5a52 100%);
+  border-radius: 2px;
+  margin: 0 auto 32px;
+}
+
+.review-meaning {
+  display: block;
+  font-size: 36px;
+  color: #333;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.review-actions {
+  display: flex;
+  gap: 20px;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px;
+  border-radius: 24px;
+  transition: all 0.3s ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.wrong-btn {
+  background: rgba(255, 255, 255, 0.2);
+
+  .btn-text {
+    color: #fff;
+  }
+}
+
+.mastered-btn {
+  background: #fff;
+
+  .btn-text {
+    color: #52c41a;
+  }
+}
+
+.btn-icon {
+  font-size: 40px;
+  margin-bottom: 8px;
+}
+
+.btn-text {
+  font-size: 28px;
+  font-weight: 600;
+}
+

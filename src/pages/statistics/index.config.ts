@@ -1,0 +1,6 @@
+export default definePageConfig({
+  navigationBarTitleText: '学习统计',
+  navigationBarBackgroundColor: '#667eea',
+  navigationBarTextStyle: 'white'
+})
+

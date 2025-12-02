@@ -1,0 +1,40 @@
+# 依赖
+node_modules/
+.pnpm-store/
+
+# SWC 缓存
+.swc/
+
+# Lock 文件 (只保留 pnpm-lock.yaml)
+package-lock.json
+yarn.lock
+
+# 构建输出
+dist/
+build/
+
+# 日志
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# 编辑器
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# 环境变量
+.env
+.env.local
+.env.*.local
+
+# 缓存
+.cache/
+.temp/
+*.tsbuildinfo
+
+# 测试
+coverage/
+
