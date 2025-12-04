@@ -1,7 +1,7 @@
 export default definePageConfig({
   navigationBarTitleText: '学习',
-  navigationBarBackgroundColor: '#1a1a2e',
+  navigationBarBackgroundColor: '#667eea',
   navigationBarTextStyle: 'white',
-  navigationStyle: 'custom'
+  backgroundColor: '#f5f6fa'
 })
 

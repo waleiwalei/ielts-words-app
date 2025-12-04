@@ -1,4 +1,4 @@
-// Mock数据 - 雅思背单词故事数据
+// 雅思背单词故事数据 - 林远的故事
 
 export interface Word {
   id: string
@@ -14,8 +14,8 @@ export interface Section {
   subtitle: string
   audioUrl: string
   backgroundImage: string
-  content: string
-  translation: string
+  content: string      // 英文内容（带重点词标记）
+  translation: string  // 中文翻译（带重点词标记）
   words: Word[]
 }
 
@@ -26,182 +26,463 @@ export interface Part {
   sections: Section[]
 }
 
-// 模拟音频URL（实际项目中需要替换为真实音频）
-const MOCK_AUDIO = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'
-
-// 模拟背景图片
-const MOCK_IMAGES = [
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
-  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800',
-  'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800',
-  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800',
-  'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=800',
-  'https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=800'
-]
+// 背景图片 - 与标题内容相关
+const SECTION_IMAGES = {
+  // 山与天空 - 壮观的山峰和天空
+  mountainAndSky: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800',
+  // 暴风雨 - 闪电和暴风雨场景
+  storm: 'https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?w=800',
+  // 家乡的水 - 宁静的河流和水景
+  watersOfHome: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800',
+  // 奶奶的草药园 - 草药和花园
+  herbGarden: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800',
+  // 森林课堂 - 森林场景
+  forestClassroom: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=800'
+}
 
 export const mockParts: Part[] = [
   {
     id: 'part1',
     title: 'Part 1',
-    description: '基础词汇 - 日常生活场景',
+    description: '林远的童年 - 山村与自然',
     sections: [
       {
         id: 'section1-1',
-        title: 'The Morning Routine',
-        subtitle: '早晨的日常',
-        audioUrl: MOCK_AUDIO,
-        backgroundImage: MOCK_IMAGES[0],
-        content: `Every morning, Sarah wakes up at 6 AM. She has a rigorous routine that helps her maintain her productivity throughout the day. First, she meditates for 15 minutes to enhance her mental clarity. Then, she goes for a brisk walk in the nearby park, where the serene environment helps her contemplate the day ahead.`,
-        translation: `每天早上，萨拉在6点钟醒来。她有一套严格的日常程序，帮助她保持一整天的工作效率。首先，她冥想15分钟来增强思维清晰度。然后，她在附近的公园进行快步走，那里宁静的环境帮助她思考即将到来的一天。`,
+        title: 'The Mountain and the Sky',
+        subtitle: '山与天空',
+        audioUrl: '/assets/audio/section-1.1.mp3',
+        backgroundImage: SECTION_IMAGES.mountainAndSky,
+        content: `The Mountain and the Sky
+
+Time: Summer, 2002
+Place: A village in Yunnan, China
+Lin Yuan's Age: 7
+
+That summer was exceptionally hot. Lin Yuan followed his grandfather up Laojun Mountain behind their village. It was his first time reaching such a high [altitude]. Standing at the summit, he gazed at the distant [horizon] stretching endlessly before him.
+
+His grandfather pointed to the sky. "This layer of air above us is called the [atmosphere]. It contains the [oxygen] we breathe, along with [carbon dioxide] and traces of [hydrogen]."
+
+"What's below the ground?" Lin Yuan asked.
+
+Grandfather squatted down and drew a circle in the dirt. "The Earth is like an egg. The outer shell is the [crust]. Below that is the [mantle], hot as [magma]. At the center lies the [core]."
+
+He explained that the Earth was divided by lines of [longitude] and [latitude], with the [equator] circling its middle. "We live on the [lithosphere], surrounded by the [hydrosphere] — all the water on Earth."
+
+Lin Yuan picked up a smooth [pebble] and a piece of rough [granite]. He noticed some sparkling [quartz] and even found what looked like [ore] containing [mineral] deposits. Grandfather said the [marble] in the village temple came from these very mountains.
+
+Suddenly, a [gust] of wind swept through, followed by a gentle [breeze]. "The [monsoon] season is coming," Grandfather said. "We might see a [gale] or even a [typhoon] this year. Last year, a [tornado] touched down in the valley."
+
+Dark clouds gathered. Lin Yuan learned that day that mountain [weather] could change in an instant.`,
+        translation: `山与天空
+
+时间：2002年夏天
+地点：中国云南某山村
+林远年龄：7岁
+
+那年夏天特别热。林远跟着爷爷爬上村后的老君山，这是他第一次登上这么高的【海拔】(altitude)。站在山顶，他看到远处的【地平线】(horizon)一望无际。
+
+爷爷指着天空说："我们头顶的这层空气叫做【大气层】(atmosphere)。里面有我们呼吸的【氧气】(oxygen)，还有【二氧化碳】(carbon dioxide)和少量的【氢气】(hydrogen)。"
+
+"那地下面是什么？"林远问。
+
+爷爷蹲下来在地上画了一个圆："地球就像一个鸡蛋。最外面是【地壳】(crust)，下面是【地幔】(mantle)，热得像【岩浆】(magma)。最中间是【地核】(core)。"
+
+他解释说，地球被【经度】(longitude)和【纬度】(latitude)线划分，【赤道】(equator)环绕中间。"我们住在【岩石圈】(lithosphere)上，周围是【水圈】(hydrosphere)——地球上所有的水。"
+
+林远捡起一块光滑的【鹅卵石】(pebble)和一块粗糙的【花岗岩】(granite)。他注意到一些闪闪发光的【石英】(quartz)，甚至找到了看起来含有【矿物】(mineral)沉积的【矿石】(ore)。爷爷说村里庙宇的【大理石】(marble)就来自这些山。
+
+突然，一阵【狂风】(gust)刮过，随后是轻柔的【微风】(breeze)。"【季风】(monsoon)季节要来了，"爷爷说，"今年可能会有【大风】(gale)甚至【台风】(typhoon)。去年山谷里还下过【龙卷风】(tornado)。"
+
+乌云聚集。林远那天学到，山里的【天气】(weather)变化无常。`,
         words: [
-          {
-            id: 'w1',
-            word: 'rigorous',
-            phonetic: '/ˈrɪɡərəs/',
-            meaning: 'adj. 严格的，严厉的',
-            example: 'The training program is rigorous but effective.'
-          },
-          {
-            id: 'w2',
-            word: 'productivity',
-            phonetic: '/ˌprɒdʌkˈtɪvəti/',
-            meaning: 'n. 生产力，工作效率',
-            example: 'Working from home increased her productivity.'
-          },
-          {
-            id: 'w3',
-            word: 'meditate',
-            phonetic: '/ˈmedɪteɪt/',
-            meaning: 'v. 冥想，沉思',
-            example: 'I meditate every morning to reduce stress.'
-          },
-          {
-            id: 'w4',
-            word: 'enhance',
-            phonetic: '/ɪnˈhɑːns/',
-            meaning: 'v. 提高，增强',
-            example: 'The new software will enhance our capabilities.'
-          },
-          {
-            id: 'w5',
-            word: 'serene',
-            phonetic: '/səˈriːn/',
-            meaning: 'adj. 宁静的，平静的',
-            example: 'The lake was serene in the early morning.'
-          },
-          {
-            id: 'w6',
-            word: 'contemplate',
-            phonetic: '/ˈkɒntəmpleɪt/',
-            meaning: 'v. 沉思，考虑',
-            example: 'She sat by the window contemplating her future.'
-          }
+          { id: 'w1-1', word: 'atmosphere', phonetic: '/ˈætməsfɪə/', meaning: 'n. 大气层, 大气圈; 气氛', example: 'The Earth\'s atmosphere protects us from harmful radiation.' },
+          { id: 'w1-2', word: 'hydrosphere', phonetic: '/ˈhaɪdrəsfɪə/', meaning: 'n. 水圈; 大气中的水气', example: 'The hydrosphere includes all water on Earth.' },
+          { id: 'w1-3', word: 'lithosphere', phonetic: '/ˈlɪθəsfɪə/', meaning: 'n. 岩石圈', example: 'We live on the lithosphere.' },
+          { id: 'w1-4', word: 'oxygen', phonetic: '/ˈɒksɪdʒən/', meaning: 'n. 氧气', example: 'Plants produce oxygen through photosynthesis.' },
+          { id: 'w1-5', word: 'oxide', phonetic: '/ˈɒksaɪd/', meaning: 'n. 氧化物', example: 'Rust is iron oxide.' },
+          { id: 'w1-6', word: 'carbon dioxide', phonetic: '/ˌkɑːbən daɪˈɒksaɪd/', meaning: 'n. 二氧化碳', example: 'Trees absorb carbon dioxide from the air.' },
+          { id: 'w1-7', word: 'hydrogen', phonetic: '/ˈhaɪdrədʒən/', meaning: 'n. 氢气', example: 'Water is made of hydrogen and oxygen.' },
+          { id: 'w1-8', word: 'core', phonetic: '/kɔː/', meaning: 'n. 中心, 核心; 地核', example: 'The Earth\'s core is extremely hot.' },
+          { id: 'w1-9', word: 'crust', phonetic: '/krʌst/', meaning: 'n. 地壳; 外壳', example: 'The Earth\'s crust is relatively thin.' },
+          { id: 'w1-10', word: 'mantle', phonetic: '/ˈmæntl/', meaning: 'n. 地幔; 斗篷, 披风', example: 'The mantle lies between the crust and the core.' },
+          { id: 'w1-11', word: 'longitude', phonetic: '/ˈlɒŋɡɪtjuːd/', meaning: 'n. 经度', example: 'Lines of longitude run from pole to pole.' },
+          { id: 'w1-12', word: 'latitude', phonetic: '/ˈlætɪtjuːd/', meaning: 'n. 纬度', example: 'The equator is at zero degrees latitude.' },
+          { id: 'w1-13', word: 'horizon', phonetic: '/həˈraɪzn/', meaning: 'n. 地平线; 眼界, 见识', example: 'The sun set below the horizon.' },
+          { id: 'w1-14', word: 'altitude', phonetic: '/ˈæltɪtjuːd/', meaning: 'n. 高度, 海拔', example: 'The plane reached an altitude of 30,000 feet.' },
+          { id: 'w1-15', word: 'disaster', phonetic: '/dɪˈzɑːstə/', meaning: 'n. 灾难', example: 'The earthquake was a major disaster.' },
+          { id: 'w1-16', word: 'mishap', phonetic: '/ˈmɪshæp/', meaning: 'n. 小灾难', example: 'The trip was full of mishaps.' },
+          { id: 'w1-17', word: 'catastrophic', phonetic: '/ˌkætəˈstrɒfɪk/', meaning: 'adj. 灾难性的', example: 'The flood had catastrophic consequences.' },
+          { id: 'w1-18', word: 'calamity', phonetic: '/kəˈlæmɪti/', meaning: 'n. 灾难, 不幸的事', example: 'War brings calamity to innocent people.' },
+          { id: 'w1-19', word: 'endanger', phonetic: '/ɪnˈdeɪndʒə/', meaning: 'v. 使遭受危险, 危及', example: 'Pollution endangers wildlife.' },
+          { id: 'w1-20', word: 'jeopardise', phonetic: '/ˈdʒepədaɪz/', meaning: 'v. 危害, 危及', example: 'His actions could jeopardise the mission.' },
+          { id: 'w1-21', word: 'destructive', phonetic: '/dɪˈstrʌktɪv/', meaning: 'adj. 破坏性的, 有害的', example: 'The hurricane was extremely destructive.' },
+          { id: 'w1-22', word: 'El Nino', phonetic: '/el ˈniːnjəʊ/', meaning: 'n. 厄尔尼诺现象', example: 'El Nino affects global weather patterns.' },
+          { id: 'w1-23', word: 'greenhouse', phonetic: '/ˈɡriːnhaʊs/', meaning: 'n. 温室, 暖房', example: 'We grow tomatoes in the greenhouse.' },
+          { id: 'w1-24', word: 'phenomenon', phonetic: '/fɪˈnɒmɪnən/', meaning: 'n. 现象', example: 'Lightning is a natural phenomenon.' },
+          { id: 'w1-25', word: 'pebble', phonetic: '/ˈpebl/', meaning: 'n. 鹅卵石', example: 'The beach was covered with smooth pebbles.' },
+          { id: 'w1-26', word: 'magnet', phonetic: '/ˈmæɡnɪt/', meaning: 'n. 磁铁, 吸铁石', example: 'A magnet attracts iron.' },
+          { id: 'w1-27', word: 'ore', phonetic: '/ɔː/', meaning: 'n. 矿石; 矿', example: 'Iron ore is mined in this region.' },
+          { id: 'w1-28', word: 'mineral', phonetic: '/ˈmɪnərəl/', meaning: 'n. 矿物, 矿物质', example: 'The rock contains valuable minerals.' },
+          { id: 'w1-29', word: 'marble', phonetic: '/ˈmɑːbl/', meaning: 'n. 大理石', example: 'The statue is made of white marble.' },
+          { id: 'w1-30', word: 'quartz', phonetic: '/kwɔːts/', meaning: 'n. 石英', example: 'Quartz is a common mineral.' },
+          { id: 'w1-31', word: 'granite', phonetic: '/ˈɡrænɪt/', meaning: 'n. 花岗岩', example: 'The countertop is made of granite.' },
+          { id: 'w1-32', word: 'gust', phonetic: '/ɡʌst/', meaning: 'n. 一阵狂风', example: 'A gust of wind blew my hat away.' },
+          { id: 'w1-33', word: 'breeze', phonetic: '/briːz/', meaning: 'n. 微风, 和风', example: 'A cool breeze came from the sea.' },
+          { id: 'w1-34', word: 'monsoon', phonetic: '/mɒnˈsuːn/', meaning: 'n. 季风; 雨季', example: 'The monsoon brings heavy rainfall.' },
+          { id: 'w1-35', word: 'gale', phonetic: '/ɡeɪl/', meaning: 'n. 大风', example: 'The ship was caught in a gale.' },
+          { id: 'w1-36', word: 'hurricane', phonetic: '/ˈhʌrɪkən/', meaning: 'n. 飓风', example: 'The hurricane caused widespread damage.' },
+          { id: 'w1-37', word: 'tornado', phonetic: '/tɔːˈneɪdəʊ/', meaning: 'n. 龙卷风', example: 'The tornado destroyed several houses.' },
+          { id: 'w1-38', word: 'typhoon', phonetic: '/taɪˈfuːn/', meaning: 'n. 台风', example: 'The typhoon hit the coast yesterday.' },
+          { id: 'w1-39', word: 'volcano', phonetic: '/vɒlˈkeɪnəʊ/', meaning: 'n. 火山', example: 'The volcano erupted without warning.' },
+          { id: 'w1-40', word: 'erupt', phonetic: '/ɪˈrʌpt/', meaning: 'v. 爆发, 喷发', example: 'The volcano could erupt at any time.' },
+          { id: 'w1-41', word: 'magma', phonetic: '/ˈmæɡmə/', meaning: 'n. 岩浆', example: 'Magma flows beneath the Earth\'s surface.' },
+          { id: 'w1-42', word: 'thermodynamic', phonetic: '/ˌθɜːməʊdaɪˈnæmɪk/', meaning: 'adj. 热力的', example: 'Thermodynamic processes generate heat.' },
+          { id: 'w1-43', word: 'smog', phonetic: '/smɒɡ/', meaning: 'n. 烟雾, 雾霾', example: 'The city is covered in smog.' },
+          { id: 'w1-44', word: 'fume', phonetic: '/fjuːm/', meaning: 'n. 烟, 气体', example: 'Toxic fumes filled the room.' },
+          { id: 'w1-45', word: 'mist', phonetic: '/mɪst/', meaning: 'n. 薄雾', example: 'The valley was covered in mist.' },
+          { id: 'w1-46', word: 'tsunami', phonetic: '/tsuːˈnɑːmi/', meaning: 'n. 海啸', example: 'The earthquake triggered a tsunami.' },
+          { id: 'w1-47', word: 'drought', phonetic: '/draʊt/', meaning: 'n. 干旱, 旱灾', example: 'The drought lasted for three years.' },
+          { id: 'w1-48', word: 'flooding', phonetic: '/ˈflʌdɪŋ/', meaning: 'n. 洪水泛滥', example: 'Heavy rain caused severe flooding.' },
+          { id: 'w1-49', word: 'torrent', phonetic: '/ˈtɒrənt/', meaning: 'n. 激流, 洪流', example: 'A torrent of water rushed down the hill.' },
+          { id: 'w1-50', word: 'earthquake', phonetic: '/ˈɜːθkweɪk/', meaning: 'n. 地震', example: 'The earthquake measured 7.0 on the scale.' },
+          { id: 'w1-51', word: 'seismic', phonetic: '/ˈsaɪzmɪk/', meaning: 'adj. 地震的', example: 'Seismic activity was detected yesterday.' },
+          { id: 'w1-52', word: 'avalanche', phonetic: '/ˈævəlɑːnʃ/', meaning: 'n. 雪崩', example: 'The avalanche buried the village.' },
+          { id: 'w1-53', word: 'terrain', phonetic: '/təˈreɪn/', meaning: 'n. 地形', example: 'The terrain was rough and mountainous.' },
+          { id: 'w1-54', word: 'landscape', phonetic: '/ˈlændskeɪp/', meaning: 'n. 风景, 地貌', example: 'The landscape was breathtaking.' },
+          { id: 'w1-55', word: 'continent', phonetic: '/ˈkɒntɪnənt/', meaning: 'n. 大陆; 洲', example: 'Asia is the largest continent.' },
+          { id: 'w1-56', word: 'cave', phonetic: '/keɪv/', meaning: 'n. 洞穴, 山洞', example: 'We explored the cave.' },
+          { id: 'w1-57', word: 'cliff', phonetic: '/klɪf/', meaning: 'n. 悬崖, 峭壁', example: 'The cliff overlooks the ocean.' },
+          { id: 'w1-58', word: 'glacier', phonetic: '/ˈɡlæsiə/', meaning: 'n. 冰川, 冰河', example: 'The glacier is slowly melting.' },
+          { id: 'w1-59', word: 'swamp', phonetic: '/swɒmp/', meaning: 'n. 沼泽, 湿地', example: 'Alligators live in the swamp.' },
+          { id: 'w1-60', word: 'delta', phonetic: '/ˈdeltə/', meaning: 'n. 三角洲', example: 'The Nile delta is very fertile.' },
+          { id: 'w1-61', word: 'plain', phonetic: '/pleɪn/', meaning: 'n. 平原', example: 'The plain stretches for miles.' },
+          { id: 'w1-62', word: 'plateau', phonetic: '/ˈplætəʊ/', meaning: 'n. 高原', example: 'Tibet is a high plateau.' },
+          { id: 'w1-63', word: 'oasis', phonetic: '/əʊˈeɪsɪs/', meaning: 'n. 绿洲', example: 'The oasis provided water in the desert.' },
+          { id: 'w1-64', word: 'globe', phonetic: '/ɡləʊb/', meaning: 'n. 球体; 地球仪', example: 'We studied the globe in geography class.' },
+          { id: 'w1-65', word: 'hemisphere', phonetic: '/ˈhemɪsfɪə/', meaning: 'n. 半球', example: 'Australia is in the southern hemisphere.' },
+          { id: 'w1-66', word: 'equator', phonetic: '/ɪˈkweɪtə/', meaning: 'n. 赤道', example: 'The equator divides Earth into two hemispheres.' },
+          { id: 'w1-67', word: 'arctic', phonetic: '/ˈɑːktɪk/', meaning: 'adj. 极冷的; 北极的', example: 'Arctic temperatures can be deadly.' },
+          { id: 'w1-68', word: 'Antarctic', phonetic: '/æntˈɑːktɪk/', meaning: 'adj. 南极的', example: 'Antarctic ice is melting.' },
+          { id: 'w1-69', word: 'pole', phonetic: '/pəʊl/', meaning: 'n. 极', example: 'The North Pole is covered in ice.' },
+          { id: 'w1-70', word: 'polar', phonetic: '/ˈpəʊlə/', meaning: 'adj. 极地的', example: 'Polar bears live in the Arctic.' },
+          { id: 'w1-71', word: 'axis', phonetic: '/ˈæksɪs/', meaning: 'n. 轴, 轴线', example: 'The Earth rotates on its axis.' },
+          { id: 'w1-72', word: 'deteriorate', phonetic: '/dɪˈtɪəriəreɪt/', meaning: 'v. 变坏, 恶化', example: 'The weather continued to deteriorate.' },
+          { id: 'w1-73', word: 'aggravate', phonetic: '/ˈæɡrəveɪt/', meaning: 'v. 加重, 加剧', example: 'Stress can aggravate health problems.' },
+          { id: 'w1-74', word: 'degrade', phonetic: '/dɪˈɡreɪd/', meaning: 'v. 降解; 使恶化', example: 'Plastic takes years to degrade.' },
+          { id: 'w1-75', word: 'upgrade', phonetic: '/ʌpˈɡreɪd/', meaning: 'v. 使升级; 改善', example: 'We need to upgrade our equipment.' },
+          { id: 'w1-76', word: 'erode', phonetic: '/ɪˈrəʊd/', meaning: 'v. 侵蚀, 腐蚀', example: 'Wind and rain erode the rocks.' },
+          { id: 'w1-77', word: 'weather', phonetic: '/ˈweðə/', meaning: 'n. 天气', example: 'The weather is nice today.' },
+          { id: 'w1-78', word: 'meteorology', phonetic: '/ˌmiːtiəˈrɒlədʒi/', meaning: 'n. 气象学', example: 'She studied meteorology at university.' }
         ]
       },
       {
         id: 'section1-2',
-        title: 'The Busy Office',
-        subtitle: '忙碌的办公室',
-        audioUrl: MOCK_AUDIO,
-        backgroundImage: MOCK_IMAGES[1],
-        content: `The office was bustling with activity. Colleagues were collaborating on various projects, demonstrating remarkable efficiency. The manager emphasized the importance of meeting deadlines while maintaining quality. Despite the pressure, the team remained cohesive and supportive of each other.`,
-        translation: `办公室里一片繁忙景象。同事们正在合作处理各种项目，展现出非凡的效率。经理强调了在保持质量的同时完成截止日期的重要性。尽管压力很大，团队仍然保持团结和相互支持。`,
+        title: 'The Storm',
+        subtitle: '暴风雨',
+        audioUrl: '/assets/audio/section-1.2.mp3',
+        backgroundImage: SECTION_IMAGES.storm,
+        content: `The Storm
+
+Time: August, 2002
+Place: Yunnan village
+Lin Yuan's Age: 7
+
+The [disaster] came without warning. One night, the sky turned an ominous color, and the wind howled like a wounded beast. What started as a minor [mishap] — a tree falling on the village road — quickly escalated into a [catastrophic] event.
+
+The [volcano] on the distant mountain, which everyone thought was dormant, began to [erupt]. [Smog] filled the air, and poisonous [fumes] made breathing difficult. A thick [mist] descended on the valley.
+
+"This is a [calamity]!" Grandfather shouted. "The [earthquake] has triggered it!"
+
+The ground shook with [seismic] activity. Lin Yuan felt the [thermodynamic] heat rising from the earth. [Flooding] began as the river swelled into a [torrent]. The villagers feared a [tsunami] might reach them from the coast.
+
+Years of [drought] had [degraded] the soil, and now it couldn't absorb the sudden rain. The conditions continued to [deteriorate] and [aggravate] the situation. The [destructive] force of nature could [endanger] and [jeopardise] everything they had built.
+
+Lin Yuan watched as water [eroded] the hillside. This was no ordinary storm — it was a demonstration of the [El Nino] [phenomenon]. Climate change had turned their peaceful [greenhouse] of a valley into a disaster zone.
+
+An [avalanche] of mud slid down from the [cliff] above the village. The [terrain] changed overnight. What was once a gentle [landscape] now looked like a war zone.
+
+But the villagers didn't give up. They worked together to [upgrade] their defenses, building barriers to redirect the water. Lin Yuan learned that day that humans could fight back against nature's fury.`,
+        translation: `暴风雨
+
+时间：2002年8月
+地点：云南山村
+林远年龄：7岁
+
+【灾难】(disaster)来得毫无预兆。一天夜里，天空变成了不祥的颜色，狂风像受伤的野兽一样嚎叫。一开始只是个【小灾难】(mishap)——一棵树倒在村路上——很快演变成了【灾难性的】(catastrophic)事件。
+
+远山上那座大家都以为休眠的【火山】(volcano)开始【喷发】(erupt)。【烟雾】(smog)弥漫在空气中，有毒的【烟气】(fume)让人难以呼吸。浓厚的【薄雾】(mist)笼罩了山谷。
+
+"这是一场【大灾难】(calamity)！"爷爷喊道，"【地震】(earthquake)引发的！"
+
+大地因【地震】(seismic)活动而颤抖。林远感受到从地底升起的【热力】(thermodynamic)。河水暴涨成【激流】(torrent)，【洪水】(flooding)开始泛滥。村民们担心【海啸】(tsunami)会从海岸传来。
+
+多年的【干旱】(drought)使土壤【退化】(degrade)，现在它无法吸收突然的降雨。情况持续【恶化】(deteriorate)并【加剧】(aggravate)。大自然【破坏性的】(destructive)力量可能【危及】(endanger)并【危害】(jeopardise)他们所建造的一切。
+
+林远看着水流【侵蚀】(erode)山坡。这不是普通的暴风雨——这是【厄尔尼诺】(El Nino)【现象】(phenomenon)的展示。气候变化把他们宁静的【温室】(greenhouse)般的山谷变成了灾区。
+
+一场泥石流从村子上方的【悬崖】(cliff)滑落。【地形】(terrain)一夜之间改变。曾经温和的【地貌】(landscape)现在看起来像战区。
+
+但村民们没有放弃。他们齐心协力【升级】(upgrade)防御工事，建造屏障引导水流。林远那天学到，人类可以反击大自然的怒火。`,
         words: [
-          {
-            id: 'w7',
-            word: 'bustling',
-            phonetic: '/ˈbʌslɪŋ/',
-            meaning: 'adj. 熙熙攘攘的，忙碌的',
-            example: 'The market was bustling with shoppers.'
-          },
-          {
-            id: 'w8',
-            word: 'collaborate',
-            phonetic: '/kəˈlæbəreɪt/',
-            meaning: 'v. 合作，协作',
-            example: 'We collaborated with other teams on the project.'
-          },
-          {
-            id: 'w9',
-            word: 'remarkable',
-            phonetic: '/rɪˈmɑːkəbl/',
-            meaning: 'adj. 非凡的，显著的',
-            example: 'She made remarkable progress in her studies.'
-          },
-          {
-            id: 'w10',
-            word: 'efficiency',
-            phonetic: '/ɪˈfɪʃnsi/',
-            meaning: 'n. 效率，效能',
-            example: 'We need to improve the efficiency of our processes.'
-          },
-          {
-            id: 'w11',
-            word: 'emphasize',
-            phonetic: '/ˈemfəsaɪz/',
-            meaning: 'v. 强调，着重',
-            example: 'The teacher emphasized the importance of practice.'
-          },
-          {
-            id: 'w12',
-            word: 'cohesive',
-            phonetic: '/kəʊˈhiːsɪv/',
-            meaning: 'adj. 有凝聚力的，团结的',
-            example: 'A cohesive team achieves better results.'
-          }
+          { id: 'w2-1', word: 'Mediterranean', phonetic: '/ˌmedɪtəˈreɪniən/', meaning: 'adj. 地中海的', example: 'Mediterranean climate is mild and sunny.' },
+          { id: 'w2-2', word: 'Atlantic', phonetic: '/ətˈlæntɪk/', meaning: 'adj. 大西洋的', example: 'We crossed the Atlantic Ocean.' },
+          { id: 'w2-3', word: 'pacific', phonetic: '/pəˈsɪfɪk/', meaning: 'adj. 平静的; 太平洋的', example: 'The Pacific Ocean is the largest ocean.' },
+          { id: 'w2-4', word: 'ocean', phonetic: '/ˈəʊʃn/', meaning: 'n. 海洋', example: 'The ocean is vast and deep.' },
+          { id: 'w2-5', word: 'marine', phonetic: '/məˈriːn/', meaning: 'adj. 海生的, 海洋的', example: 'Marine life is diverse and beautiful.' },
+          { id: 'w2-6', word: 'navigation', phonetic: '/ˌnævɪˈɡeɪʃn/', meaning: 'n. 航行; 航海', example: 'Navigation by stars was common in ancient times.' },
+          { id: 'w2-7', word: 'gulf', phonetic: '/ɡʌlf/', meaning: 'n. 海湾', example: 'The Gulf of Mexico is warm.' },
+          { id: 'w2-8', word: 'beach', phonetic: '/biːtʃ/', meaning: 'n. 海滩', example: 'We spent the day at the beach.' },
+          { id: 'w2-9', word: 'coast', phonetic: '/kəʊst/', meaning: 'n. 海岸, 海滨', example: 'The coast is lined with hotels.' },
+          { id: 'w2-10', word: 'shore', phonetic: '/ʃɔː/', meaning: 'n. 岸, 滨', example: 'We walked along the shore.' },
+          { id: 'w2-11', word: 'tide', phonetic: '/taɪd/', meaning: 'n. 趋势, 潮流; 潮汐', example: 'The tide comes in twice a day.' },
+          { id: 'w2-12', word: 'current', phonetic: '/ˈkʌrənt/', meaning: 'n. 水流; 电流; 趋向', example: 'The current was too strong to swim against.' },
+          { id: 'w2-13', word: 'brook', phonetic: '/brʊk/', meaning: 'n. 小河, 溪', example: 'A small brook ran through the garden.' },
+          { id: 'w2-14', word: 'stream', phonetic: '/striːm/', meaning: 'n. 小河, 溪; 流', example: 'We crossed the stream on stepping stones.' },
+          { id: 'w2-15', word: 'source', phonetic: '/sɔːs/', meaning: 'n. 河的源头; 根源', example: 'The source of the river is in the mountains.' },
+          { id: 'w2-16', word: 'shallow', phonetic: '/ˈʃæləʊ/', meaning: 'adj. 浅的; 肤浅的', example: 'The water is shallow here.' },
+          { id: 'w2-17', word: 'superficial', phonetic: '/ˌsuːpəˈfɪʃl/', meaning: 'adj. 表皮的, 表层的', example: 'The wound was only superficial.' },
+          { id: 'w2-18', word: 'flat', phonetic: '/flæt/', meaning: 'adj. 平坦的; 扁平的', example: 'The land is flat for miles.' },
+          { id: 'w2-19', word: 'smooth', phonetic: '/smuːð/', meaning: 'adj. 光滑的; 平稳的', example: 'The stone was smooth to the touch.' },
+          { id: 'w2-20', word: 'rough', phonetic: '/rʌf/', meaning: 'adj. 粗糙的; 粗略的', example: 'The bark felt rough.' },
+          { id: 'w2-21', word: 'sandy', phonetic: '/ˈsændi/', meaning: 'adj. 铺满沙的', example: 'The sandy beach was warm.' },
+          { id: 'w2-22', word: 'stony', phonetic: '/ˈstəʊni/', meaning: 'adj. 多石的', example: 'The path was stony and difficult to walk on.' },
+          { id: 'w2-23', word: 'vertical', phonetic: '/ˈvɜːtɪkl/', meaning: 'adj. 垂直的, 直立的', example: 'The cliff was nearly vertical.' },
+          { id: 'w2-24', word: 'steep', phonetic: '/stiːp/', meaning: 'adj. 陡峭的', example: 'The hill was too steep to climb.' },
+          { id: 'w2-25', word: 'parallel', phonetic: '/ˈpærəlel/', meaning: 'adj. 平行的', example: 'The two lines are parallel.' },
+          { id: 'w2-26', word: 'narrow', phonetic: '/ˈnærəʊ/', meaning: 'adj. 狭窄的', example: 'The passage was narrow and dark.' },
+          { id: 'w2-27', word: 'Oceania', phonetic: '/ˌəʊsiˈɑːniə/', meaning: 'n. 大洋洲', example: 'Australia is part of Oceania.' },
+          { id: 'w2-28', word: 'mainland', phonetic: '/ˈmeɪnlænd/', meaning: 'n. 大陆, 本土', example: 'The island is 50km from the mainland.' },
+          { id: 'w2-29', word: 'peninsula', phonetic: '/pəˈnɪnsjələ/', meaning: 'n. 半岛', example: 'Italy is a peninsula.' },
+          { id: 'w2-30', word: 'climate', phonetic: '/ˈklaɪmət/', meaning: 'n. 气候; 风气', example: 'The climate here is mild.' }
         ]
       },
       {
         id: 'section1-3',
-        title: 'Weekend Adventures',
-        subtitle: '周末冒险',
-        audioUrl: MOCK_AUDIO,
-        backgroundImage: MOCK_IMAGES[2],
-        content: `Tom decided to explore the countryside during the weekend. The landscape was breathtaking, with rolling hills and pristine streams. He encountered various wildlife and felt a profound connection with nature. This excursion rejuvenated his spirit and provided much-needed respite from urban life.`,
-        translation: `汤姆决定在周末探索乡村。那里的风景令人叹为观止，有连绵起伏的山丘和清澈的溪流。他遇到了各种野生动物，感受到与大自然深深的联系。这次郊游振奋了他的精神，为他提供了急需的远离都市生活的休息。`,
+        title: 'The Waters of Home',
+        subtitle: '家乡的水',
+        audioUrl: '/assets/audio/section-1.3.mp3',
+        backgroundImage: SECTION_IMAGES.watersOfHome,
+        content: `The Waters of Home
+
+Time: Autumn, 2002
+Place: Yunnan village
+Lin Yuan's Age: 7
+
+After the storm passed, Lin Yuan's grandfather took him to explore the changed [landscape]. They walked along the [brook] that had swelled into a proper [stream]. Grandfather explained that every river has a [source] — theirs came from a [glacier] high in the mountains.
+
+"The water flows from the [plateau] down to the [plain]," Grandfather said, pointing to where the [delta] met the [swamp]. "Eventually, it reaches the [ocean]."
+
+They stood on the [shore] watching the [tide] come in and go out. The [current] was strong near the [coast]. Lin Yuan dipped his feet in the [shallow] water near the [beach], feeling the [sandy] bottom give way to [stony] patches.
+
+"See how [steep] that [cliff] is?" Grandfather pointed to a [vertical] rock face. "And look at those [parallel] lines in the stone — they show how the earth moved millions of years ago."
+
+They discussed the world's great bodies of water: the [Mediterranean] Sea, the [Atlantic] and [Pacific] Oceans. Lin Yuan learned that their [continent] was connected to the [mainland] of Asia, and that far away was [Oceania], a region of islands.
+
+"Some places are [arctic] cold," Grandfather explained, "like the [Antarctic] at the South [Pole]. The [polar] regions have a completely different [climate]."
+
+Lin Yuan found a [cave] entrance near the [gulf]. Inside, the walls were [smooth] in some places and [rough] in others. The [flat] floor showed signs of ancient [marine] life — this cave had once been underwater!
+
+"[Navigation] was how our ancestors explored the world," Grandfather said. "They sailed from [peninsula] to [peninsula], across [narrow] straits."
+
+That day, Lin Yuan understood that water connected everything on their [globe], from the highest [hemisphere] to the lowest valley.`,
+        translation: `家乡的水
+
+时间：2002年秋天
+地点：云南山村
+林远年龄：7岁
+
+暴风雨过后，爷爷带林远去探索变化了的【地貌】(landscape)。他们沿着已经涨成真正【溪流】(stream)的【小河】(brook)行走。爷爷解释说，每条河都有一个【源头】(source)——他们的源头来自高山上的【冰川】(glacier)。
+
+"水从【高原】(plateau)流向【平原】(plain)，"爷爷指着【三角洲】(delta)与【沼泽】(swamp)相接的地方说，"最终，它流入【海洋】(ocean)。"
+
+他们站在【岸边】(shore)看【潮汐】(tide)涨落。【海岸】(coast)附近的【水流】(current)很强。林远把脚伸进【海滩】(beach)附近的【浅水】(shallow)里，感受【沙质】(sandy)的底部变成【多石】(stony)的区域。
+
+"看那【悬崖】(cliff)有多【陡峭】(steep)？"爷爷指着一面【垂直】(vertical)的岩壁说，"再看岩石上那些【平行】(parallel)的线——它们显示了数百万年前地球是如何移动的。"
+
+他们讨论了世界上伟大的水域：【地中海】(Mediterranean)、【大西洋】(Atlantic)和【太平洋】(Pacific)。林远了解到他们的【大陆】(continent)与亚洲【大陆】(mainland)相连，而远处是【大洋洲】(Oceania)，一个岛屿区域。
+
+"有些地方【极冷】(arctic)，"爷爷解释说，"比如南【极】(Pole)的【南极洲】(Antarctic)。【极地】(polar)地区有完全不同的【气候】(climate)。"
+
+林远在【海湾】(gulf)附近发现了一个【洞穴】(cave)入口。里面，墙壁有些地方【光滑】(smooth)，有些地方【粗糙】(rough)。【平坦】(flat)的地面显示出古代【海洋】(marine)生物的迹象——这个洞穴曾经在水下！
+
+"【航海】(navigation)是我们祖先探索世界的方式，"爷爷说，"他们从一个【半岛】(peninsula)航行到另一个，穿越【狭窄】(narrow)的海峡。"
+
+那天，林远明白了水连接着【地球】(globe)上的一切，从最高的【半球】(hemisphere)到最低的山谷。`,
         words: [
-          {
-            id: 'w13',
-            word: 'breathtaking',
-            phonetic: '/ˈbreθteɪkɪŋ/',
-            meaning: 'adj. 令人惊叹的，惊人的',
-            example: 'The view from the mountain was breathtaking.'
-          },
-          {
-            id: 'w14',
-            word: 'pristine',
-            phonetic: '/ˈprɪstiːn/',
-            meaning: 'adj. 原始的，纯净的',
-            example: 'The beach was pristine and untouched.'
-          },
-          {
-            id: 'w15',
-            word: 'encounter',
-            phonetic: '/ɪnˈkaʊntər/',
-            meaning: 'v. 遇到，遭遇',
-            example: 'We encountered several obstacles during our journey.'
-          },
-          {
-            id: 'w16',
-            word: 'profound',
-            phonetic: '/prəˈfaʊnd/',
-            meaning: 'adj. 深刻的，意义深远的',
-            example: 'The book had a profound impact on me.'
-          },
-          {
-            id: 'w17',
-            word: 'rejuvenate',
-            phonetic: '/rɪˈdʒuːvəneɪt/',
-            meaning: 'v. 使恢复活力，使年轻',
-            example: 'A good vacation can rejuvenate your mind.'
-          },
-          {
-            id: 'w18',
-            word: 'respite',
-            phonetic: '/ˈrespaɪt/',
-            meaning: 'n. 暂缓，休息',
-            example: 'The weekend provided a welcome respite.'
-          }
+          { id: 'w3-1', word: 'mild', phonetic: '/maɪld/', meaning: 'adj. 温和的; 不严重的', example: 'The winter here is mild.' },
+          { id: 'w3-2', word: 'heating', phonetic: '/ˈhiːtɪŋ/', meaning: 'n. 供暖; 暖气装置', example: 'The heating system broke down.' },
+          { id: 'w3-3', word: 'moderate', phonetic: '/ˈmɒdərət/', meaning: 'adj. 适度的; 温和的', example: 'Exercise at a moderate pace.' },
+          { id: 'w3-4', word: 'warm', phonetic: '/wɔːm/', meaning: 'adj. 温暖的', example: 'The weather is warm today.' },
+          { id: 'w3-5', word: 'thermal', phonetic: '/ˈθɜːml/', meaning: 'adj. 热量的', example: 'Thermal energy powers the plant.' },
+          { id: 'w3-6', word: 'tropics', phonetic: '/ˈtrɒpɪks/', meaning: 'n. 热带地区', example: 'The tropics are near the equator.' },
+          { id: 'w3-7', word: 'arid', phonetic: '/ˈærɪd/', meaning: 'adj. 干燥的, 干旱的', example: 'The desert is arid and hot.' },
+          { id: 'w3-8', word: 'moist', phonetic: '/mɔɪst/', meaning: 'adj. 潮湿的, 湿润的', example: 'The air was moist and warm.' },
+          { id: 'w3-9', word: 'damp', phonetic: '/dæmp/', meaning: 'adj. 潮湿的', example: 'The basement is damp.' },
+          { id: 'w3-10', word: 'humid', phonetic: '/ˈhjuːmɪd/', meaning: 'adj. 潮湿的, 湿热的', example: 'The climate is humid in summer.' },
+          { id: 'w3-11', word: 'snowy', phonetic: '/ˈsnəʊi/', meaning: 'adj. 下雪多的', example: 'It was a snowy winter.' },
+          { id: 'w3-12', word: 'frost', phonetic: '/frɒst/', meaning: 'n. 霜; 霜冻', example: 'There was frost on the window.' },
+          { id: 'w3-13', word: 'hail', phonetic: '/heɪl/', meaning: 'n. 雹, 冰雹', example: 'Hail damaged the crops.' },
+          { id: 'w3-14', word: 'thaw', phonetic: '/θɔː/', meaning: 'v. 解冻, 融化', example: 'The snow began to thaw.' },
+          { id: 'w3-15', word: 'chill', phonetic: '/tʃɪl/', meaning: 'n. 寒冷', example: 'There was a chill in the air.' },
+          { id: 'w3-16', word: 'freeze', phonetic: '/friːz/', meaning: 'v. 结冰', example: 'Water will freeze at 0°C.' },
+          { id: 'w3-17', word: 'frigid', phonetic: '/ˈfrɪdʒɪd/', meaning: 'adj. 寒冷的', example: 'The frigid wind cut through us.' },
+          { id: 'w3-18', word: 'icy', phonetic: '/ˈaɪsi/', meaning: 'adj. 冰冷的', example: 'The roads were icy.' },
+          { id: 'w3-19', word: 'chilly', phonetic: '/ˈtʃɪli/', meaning: 'adj. 寒冷的', example: 'It\'s chilly outside.' },
+          { id: 'w3-20', word: 'frosty', phonetic: '/ˈfrɒsti/', meaning: 'adj. 结霜的', example: 'It was a frosty morning.' }
+        ]
+      },
+      {
+        id: 'section2-1',
+        title: 'Grandmother\'s Herb Garden',
+        subtitle: '奶奶的草药园',
+        audioUrl: '/assets/audio/section-2.1.mp3',
+        backgroundImage: SECTION_IMAGES.herbGarden,
+        content: `Grandmother's Herb Garden
+
+Time: Spring, 2003
+Place: Yunnan village
+Lin Yuan's Age: 8
+
+Lin Yuan's grandmother was the village's herbal doctor. Every spring, she would take him into the mountains to gather [herbs] for medicine. This year, she decided to teach him about [botany] — the science of plants.
+
+"All life depends on [photosynthesis]," Grandmother explained as they walked through the [vegetation]. "Plants take in [carbon dioxide] and release [oxygen]. They [respire] just like we do, but in reverse."
+
+She showed him various specimens: [perennial] plants that came back year after year, and annual ones that completed their lifecycle in a single season. Lin Yuan was fascinated by the [ecology] of the forest — how everything formed a connected [ecosystem].
+
+"This is [eco-friendly] farming," Grandmother said, pointing to her garden. "We work with nature, not against it." She practiced [horticulture] — the art of cultivating plants — and grew everything from vegetables to medicinal herbs.
+
+Every living thing, she explained, was an [organism] with its own role. [Genetics] determined their basic traits, but [mutation] and [variation] created [diversity]. Through [hybridisation], farmers could create new plant varieties.
+
+Lin Yuan learned to [classify] plants by their characteristics. Some could [reproduce] through seeds, others through roots or cuttings. Over millions of years, plants had [evolved] to survive in different environments.
+
+"See how the population of this plant [fluctuates] with the seasons?" Grandmother asked. "Nature is always adjusting."`,
+        translation: `奶奶的草药园
+
+时间：2003年春天
+地点：云南山村
+林远年龄：8岁
+
+林远的奶奶是村里的草药医生。每年春天，她都会带他上山采【药草】(herb)。今年，她决定教他【植物学】(botany)——研究植物的科学。
+
+"所有生命都依赖【光合作用】(photosynthesis)，"奶奶一边穿过【植被】(vegetation)一边解释道，"植物吸收【二氧化碳】(carbon dioxide)，释放【氧气】(oxygen)。它们也【呼吸】(respire)，只是和我们相反。"
+
+她给他展示了各种标本：年复一年生长的【多年生】(perennial)植物，以及在一个季节内完成生命周期的一年生植物。林远对森林的【生态】(ecology)着迷——一切是如何形成一个相连的【生态系统】(ecosystem)。
+
+"这是【生态友好】(eco-friendly)的耕作方式，"奶奶指着她的园子说，"我们与自然合作，而不是对抗。"她实践【园艺】(horticulture)——种植植物的艺术——种植从蔬菜到药草的一切。
+
+她解释说，每个生物都是一个【有机体】(organism)，有自己的角色。【遗传学】(genetics)决定它们的基本特征，但【变异】(mutation)和【变种】(variation)创造了【多样性】(diversity)。通过【杂交】(hybridisation)，农民可以创造新的植物品种。
+
+林远学会了按特征【分类】(classify)植物。有些可以通过种子【繁殖】(reproduce)，有些通过根或插条。经过数百万年，植物已经【进化】(evolve)以适应不同的环境。
+
+"看这种植物的数量如何随季节【波动】(fluctuate)？"奶奶问，"大自然总是在调整。"`,
+        words: [
+          { id: 'w4-1', word: 'photosynthesis', phonetic: '/ˌfəʊtəʊˈsɪnθəsɪs/', meaning: 'n. 光合作用', example: 'Photosynthesis occurs in leaves.' },
+          { id: 'w4-2', word: 'respire', phonetic: '/rɪˈspaɪə/', meaning: 'v. 呼吸', example: 'All living things respire.' },
+          { id: 'w4-3', word: 'dioxide', phonetic: '/daɪˈɒksaɪd/', meaning: 'n. 二氧化物', example: 'Carbon dioxide is a greenhouse gas.' },
+          { id: 'w4-4', word: 'vegetation', phonetic: '/ˌvedʒɪˈteɪʃn/', meaning: 'n. 植物, 草木', example: 'The vegetation was lush and green.' },
+          { id: 'w4-5', word: 'herb', phonetic: '/hɜːb/', meaning: 'n. 药草; 香草', example: 'She grows herbs in her garden.' },
+          { id: 'w4-6', word: 'perennial', phonetic: '/pəˈreniəl/', meaning: 'n. 多年生植物', example: 'Roses are perennial flowers.' },
+          { id: 'w4-7', word: 'botany', phonetic: '/ˈbɒtəni/', meaning: 'n. 植物学', example: 'She studies botany at university.' },
+          { id: 'w4-8', word: 'ecology', phonetic: '/ɪˈkɒlədʒi/', meaning: 'n. 生态学; 生态', example: 'Ecology studies the relationship between organisms.' },
+          { id: 'w4-9', word: 'ecosystem', phonetic: '/ˈiːkəʊsɪstəm/', meaning: 'n. 生态系统', example: 'The forest is a complex ecosystem.' },
+          { id: 'w4-10', word: 'eco-friendly', phonetic: '/ˌiːkəʊˈfrendli/', meaning: 'adj. 生态友好的', example: 'We use eco-friendly products.' },
+          { id: 'w4-11', word: 'horticulture', phonetic: '/ˈhɔːtɪkʌltʃə/', meaning: 'n. 园艺学', example: 'Horticulture is the art of growing plants.' },
+          { id: 'w4-12', word: 'organism', phonetic: '/ˈɔːɡənɪzəm/', meaning: 'n. 有机体, 生物', example: 'Every organism plays a role in nature.' },
+          { id: 'w4-13', word: 'genetics', phonetic: '/dʒəˈnetɪks/', meaning: 'n. 遗传学', example: 'Genetics explains hereditary traits.' },
+          { id: 'w4-14', word: 'mutation', phonetic: '/mjuːˈteɪʃn/', meaning: 'n. 变异, 突变', example: 'Mutations can cause new traits.' },
+          { id: 'w4-15', word: 'variation', phonetic: '/ˌveəriˈeɪʃn/', meaning: 'n. 变种; 变异', example: 'There is much variation in this species.' },
+          { id: 'w4-16', word: 'diversity', phonetic: '/daɪˈvɜːsəti/', meaning: 'n. 多样性', example: 'Biodiversity is essential for ecosystems.' },
+          { id: 'w4-17', word: 'hybridisation', phonetic: '/ˌhaɪbrɪdaɪˈzeɪʃn/', meaning: 'n. 杂交', example: 'Hybridisation creates new varieties.' },
+          { id: 'w4-18', word: 'classify', phonetic: '/ˈklæsɪfaɪ/', meaning: 'v. 分类', example: 'Scientists classify animals into groups.' },
+          { id: 'w4-19', word: 'reproduce', phonetic: '/ˌriːprəˈdjuːs/', meaning: 'v. 繁殖', example: 'Plants reproduce through seeds.' },
+          { id: 'w4-20', word: 'evolve', phonetic: '/ɪˈvɒlv/', meaning: 'v. 进化', example: 'Species evolve over time.' },
+          { id: 'w4-21', word: 'fluctuate', phonetic: '/ˈflʌktʃueɪt/', meaning: 'v. 波动, 起伏', example: 'Prices fluctuate daily.' }
+        ]
+      },
+      {
+        id: 'section2-2',
+        title: 'The Forest Classroom',
+        subtitle: '森林课堂',
+        audioUrl: '/assets/audio/section-2.2.mp3',
+        backgroundImage: SECTION_IMAGES.forestClassroom,
+        content: `The Forest Classroom
+
+Time: Summer, 2003
+Place: Mountain forest
+Lin Yuan's Age: 8
+
+Grandmother continued Lin Yuan's education in the forest. She showed him how plants [adapt] to their environment — some grew [dense] leaves to capture more sunlight, while others developed [barren] appearances to survive in harsh conditions.
+
+"Look at this [trunk]," she said, touching an ancient tree. "Its [bark] protects it from insects and disease." She pointed to the [bud] on a [twig], explaining how it would [bloom] into a flower and then [blossom] fully.
+
+The [foliage] above them filtered the sunlight. Grandmother identified different parts: the [petal] of a flower, the [pollen] that insects carried, the [stem] that supported everything. Some plants had [thorns] for protection.
+
+"These will [wither] soon," she said, pointing to some [wilting] flowers. "But look — new [sprouts] are emerging from the [seedlings]."
+
+She explained the concept of [fertility] — how [fertile] soil helped plants grow. The [humus] in the ground provided nourishment. Some plants were [edible], while others were [toxic] or [poisonous].
+
+"That one is [flammable]," she warned, pointing to a dry bush. "And those [evergreen] trees keep their leaves all year."
+
+Lin Yuan learned about [cereal] crops and how they [germinate] from seeds. He saw [weeds] that could [smother] other plants, and learned about [pesticides] that farmers used. Grandmother preferred [organic] methods — more [wholesome] for both plants and people.
+
+"The [vegetation] here is [lush]," she smiled, "because we respect the land."`,
+        translation: `森林课堂
+
+时间：2003年夏天
+地点：山林
+林远年龄：8岁
+
+奶奶在森林里继续教导林远。她展示了植物如何【适应】(adapt)环境——有些长出【茂密的】(dense)叶子来捕获更多阳光，而另一些则发展出【贫瘠】(barren)的外表以在恶劣条件下生存。
+
+"看这棵【树干】(trunk)，"她触摸着一棵古树说，"它的【树皮】(bark)保护它免受昆虫和疾病侵害。"她指着【细枝】(twig)上的【芽】(bud)，解释它将如何【开花】(bloom)然后【盛开】(blossom)。
+
+头顶的【树叶】(foliage)过滤着阳光。奶奶辨认出不同的部分：花的【花瓣】(petal)、昆虫携带的【花粉】(pollen)、支撑一切的【茎】(stem)。有些植物有【刺】(thorn)作为保护。
+
+"这些很快就会【枯萎】(wither)，"她指着一些正在【凋谢】(wilt)的花说，"但看——新的【嫩芽】(sprout)正从【幼苗】(seedling)中长出。"
+
+她解释了【肥沃】(fertility)的概念——【肥沃的】(fertile)土壤如何帮助植物生长。地里的【腐殖质】(humus)提供营养。有些植物是【可食用的】(edible)，而另一些是【有毒的】(toxic/poisonous)。
+
+"那个是【易燃的】(flammable)，"她警告说，指着一丛干灌木，"那些【常绿】(evergreen)树全年保持叶子。"
+
+林远了解了【谷物】(cereal)作物以及它们如何从种子【发芽】(germinate)。他看到了能【覆盖】(smother)其他植物的【杂草】(weed)，还了解了农民使用的【农药】(pesticide)。奶奶更喜欢【有机】(organic)方法——对植物和人都更【健康】(wholesome)。
+
+"这里的【植被】(vegetation)很【茂盛】(lush)，"她微笑着说，"因为我们尊重土地。"`,
+        words: [
+          { id: 'w5-1', word: 'adapt', phonetic: '/əˈdæpt/', meaning: 'v. 适应', example: 'Animals adapt to their environment.' },
+          { id: 'w5-2', word: 'dense', phonetic: '/dens/', meaning: 'adj. 密集的, 稠密的', example: 'The forest was dense and dark.' },
+          { id: 'w5-3', word: 'barren', phonetic: '/ˈbærən/', meaning: 'adj. 贫瘠的', example: 'The land was barren and dry.' },
+          { id: 'w5-4', word: 'trunk', phonetic: '/trʌŋk/', meaning: 'n. 树干', example: 'The trunk of the tree was thick.' },
+          { id: 'w5-5', word: 'bark', phonetic: '/bɑːk/', meaning: 'n. 树皮', example: 'The bark protects the tree.' },
+          { id: 'w5-6', word: 'bud', phonetic: '/bʌd/', meaning: 'n. 芽, 花蕾', example: 'The buds will bloom in spring.' },
+          { id: 'w5-7', word: 'twig', phonetic: '/twɪɡ/', meaning: 'n. 细枝', example: 'A bird sat on a twig.' },
+          { id: 'w5-8', word: 'bloom', phonetic: '/bluːm/', meaning: 'v. 开花', example: 'Flowers bloom in spring.' },
+          { id: 'w5-9', word: 'blossom', phonetic: '/ˈblɒsəm/', meaning: 'v. 开花', example: 'The cherry trees blossom beautifully.' },
+          { id: 'w5-10', word: 'foliage', phonetic: '/ˈfəʊliɪdʒ/', meaning: 'n. 树叶', example: 'The autumn foliage is colorful.' },
+          { id: 'w5-11', word: 'petal', phonetic: '/ˈpetl/', meaning: 'n. 花瓣', example: 'Rose petals are soft.' },
+          { id: 'w5-12', word: 'pollen', phonetic: '/ˈpɒlən/', meaning: 'n. 花粉', example: 'Bees carry pollen from flower to flower.' },
+          { id: 'w5-13', word: 'stem', phonetic: '/stem/', meaning: 'n. 茎', example: 'The stem supports the flower.' },
+          { id: 'w5-14', word: 'thorn', phonetic: '/θɔːn/', meaning: 'n. 刺', example: 'Roses have thorns.' },
+          { id: 'w5-15', word: 'wither', phonetic: '/ˈwɪðə/', meaning: 'v. 枯萎', example: 'The flowers withered in the heat.' },
+          { id: 'w5-16', word: 'wilt', phonetic: '/wɪlt/', meaning: 'v. 凋谢', example: 'The plants wilted without water.' },
+          { id: 'w5-17', word: 'sprout', phonetic: '/spraʊt/', meaning: 'n. 嫩芽', example: 'New sprouts appeared in spring.' },
+          { id: 'w5-18', word: 'seedling', phonetic: '/ˈsiːdlɪŋ/', meaning: 'n. 幼苗', example: 'The seedlings need water.' },
+          { id: 'w5-19', word: 'fertility', phonetic: '/fɜːˈtɪləti/', meaning: 'n. 肥沃', example: 'The soil has good fertility.' },
+          { id: 'w5-20', word: 'fertile', phonetic: '/ˈfɜːtaɪl/', meaning: 'adj. 肥沃的', example: 'The valley has fertile soil.' },
+          { id: 'w5-21', word: 'humus', phonetic: '/ˈhjuːməs/', meaning: 'n. 腐殖质', example: 'Humus makes soil rich.' },
+          { id: 'w5-22', word: 'nourish', phonetic: '/ˈnʌrɪʃ/', meaning: 'v. 滋养', example: 'Good soil nourishes plants.' },
+          { id: 'w5-23', word: 'edible', phonetic: '/ˈedɪbl/', meaning: 'adj. 可食用的', example: 'Not all mushrooms are edible.' },
+          { id: 'w5-24', word: 'toxic', phonetic: '/ˈtɒksɪk/', meaning: 'adj. 有毒的', example: 'Some plants are toxic.' },
+          { id: 'w5-25', word: 'poisonous', phonetic: '/ˈpɔɪzənəs/', meaning: 'adj. 有毒的', example: 'The berries are poisonous.' },
+          { id: 'w5-26', word: 'flammable', phonetic: '/ˈflæməbl/', meaning: 'adj. 易燃的', example: 'Keep flammable materials away from fire.' },
+          { id: 'w5-27', word: 'evergreen', phonetic: '/ˈevəɡriːn/', meaning: 'adj. 常绿的', example: 'Pine trees are evergreen.' },
+          { id: 'w5-28', word: 'cereal', phonetic: '/ˈsɪəriəl/', meaning: 'n. 谷物', example: 'Wheat is a cereal crop.' },
+          { id: 'w5-29', word: 'germinate', phonetic: '/ˈdʒɜːmɪneɪt/', meaning: 'v. 发芽', example: 'Seeds germinate in spring.' },
+          { id: 'w5-30', word: 'weed', phonetic: '/wiːd/', meaning: 'n. 杂草', example: 'We need to remove the weeds.' },
+          { id: 'w5-31', word: 'smother', phonetic: '/ˈsmʌðə/', meaning: 'v. 覆盖', example: 'Weeds can smother young plants.' },
+          { id: 'w5-32', word: 'pesticide', phonetic: '/ˈpestɪsaɪd/', meaning: 'n. 农药', example: 'Organic farmers avoid pesticides.' },
+          { id: 'w5-33', word: 'organic', phonetic: '/ɔːˈɡænɪk/', meaning: 'adj. 有机的', example: 'We buy organic vegetables.' },
+          { id: 'w5-34', word: 'wholesome', phonetic: '/ˈhəʊlsəm/', meaning: 'adj. 健康的', example: 'Eat wholesome food.' },
+          { id: 'w5-35', word: 'lush', phonetic: '/lʌʃ/', meaning: 'adj. 茂盛的', example: 'The garden is lush and green.' }
         ]
       }
     ]
@@ -209,228 +490,14 @@ export const mockParts: Part[] = [
   {
     id: 'part2',
     title: 'Part 2',
-    description: '进阶词汇 - 学术与社会话题',
-    sections: [
-      {
-        id: 'section2-1',
-        title: 'Climate Change Debate',
-        subtitle: '气候变化辩论',
-        audioUrl: MOCK_AUDIO,
-        backgroundImage: MOCK_IMAGES[3],
-        content: `The symposium on climate change brought together scientists from around the globe. They presented compelling evidence about the deteriorating state of our environment. The consensus was that immediate action is imperative to mitigate the adverse effects. Some proposed innovative solutions while others advocated for stricter regulations.`,
-        translation: `这场关于气候变化的研讨会聚集了来自世界各地的科学家。他们展示了关于我们环境恶化状态的有力证据。共识是立即采取行动以减轻不利影响是必要的。一些人提出了创新解决方案，而另一些人则主张实施更严格的法规。`,
-        words: [
-          {
-            id: 'w19',
-            word: 'symposium',
-            phonetic: '/sɪmˈpəʊziəm/',
-            meaning: 'n. 研讨会，座谈会',
-            example: 'The medical symposium attracted many experts.'
-          },
-          {
-            id: 'w20',
-            word: 'compelling',
-            phonetic: '/kəmˈpelɪŋ/',
-            meaning: 'adj. 令人信服的，引人注目的',
-            example: 'The lawyer presented a compelling argument.'
-          },
-          {
-            id: 'w21',
-            word: 'deteriorating',
-            phonetic: '/dɪˈtɪəriəreɪtɪŋ/',
-            meaning: 'adj. 恶化的，变坏的',
-            example: 'The patient\'s health was deteriorating rapidly.'
-          },
-          {
-            id: 'w22',
-            word: 'consensus',
-            phonetic: '/kənˈsensəs/',
-            meaning: 'n. 共识，一致意见',
-            example: 'The committee reached a consensus on the issue.'
-          },
-          {
-            id: 'w23',
-            word: 'imperative',
-            phonetic: '/ɪmˈperətɪv/',
-            meaning: 'adj. 必要的，紧迫的',
-            example: 'It is imperative that we act now.'
-          },
-          {
-            id: 'w24',
-            word: 'mitigate',
-            phonetic: '/ˈmɪtɪɡeɪt/',
-            meaning: 'v. 减轻，缓和',
-            example: 'Measures were taken to mitigate the damage.'
-          }
-        ]
-      },
-      {
-        id: 'section2-2',
-        title: 'Technology Revolution',
-        subtitle: '科技革命',
-        audioUrl: MOCK_AUDIO,
-        backgroundImage: MOCK_IMAGES[4],
-        content: `The digital transformation has revolutionized every aspect of modern society. Artificial intelligence is no longer a futuristic concept but a tangible reality that permeates our daily lives. While skeptics raise concerns about privacy and employment, proponents argue that the benefits far outweigh the potential drawbacks.`,
-        translation: `数字化转型已经彻底改变了现代社会的方方面面。人工智能不再是一个未来主义的概念，而是渗透在我们日常生活中的切实现实。虽然怀疑论者对隐私和就业提出担忧，但支持者认为好处远远超过潜在的缺点。`,
-        words: [
-          {
-            id: 'w25',
-            word: 'revolutionize',
-            phonetic: '/ˌrevəˈluːʃənaɪz/',
-            meaning: 'v. 彻底改变，革新',
-            example: 'The internet revolutionized communication.'
-          },
-          {
-            id: 'w26',
-            word: 'tangible',
-            phonetic: '/ˈtændʒəbl/',
-            meaning: 'adj. 有形的，切实的',
-            example: 'We need tangible evidence to support this claim.'
-          },
-          {
-            id: 'w27',
-            word: 'permeate',
-            phonetic: '/ˈpɜːmieɪt/',
-            meaning: 'v. 渗透，弥漫',
-            example: 'The smell of coffee permeated the room.'
-          },
-          {
-            id: 'w28',
-            word: 'skeptic',
-            phonetic: '/ˈskeptɪk/',
-            meaning: 'n. 怀疑论者',
-            example: 'Even the skeptics were impressed by the results.'
-          },
-          {
-            id: 'w29',
-            word: 'proponent',
-            phonetic: '/prəˈpəʊnənt/',
-            meaning: 'n. 支持者，倡导者',
-            example: 'She is a proponent of renewable energy.'
-          },
-          {
-            id: 'w30',
-            word: 'outweigh',
-            phonetic: '/ˌaʊtˈweɪ/',
-            meaning: 'v. 超过，重于',
-            example: 'The advantages outweigh the disadvantages.'
-          }
-        ]
-      }
-    ]
+    description: '进阶词汇 - 待更新',
+    sections: []
   },
   {
     id: 'part3',
     title: 'Part 3',
-    description: '高级词汇 - 抽象概念与哲学思考',
-    sections: [
-      {
-        id: 'section3-1',
-        title: 'Philosophy of Life',
-        subtitle: '人生哲学',
-        audioUrl: MOCK_AUDIO,
-        backgroundImage: MOCK_IMAGES[5],
-        content: `The pursuit of happiness is a ubiquitous theme in human existence. Philosophers throughout history have grappled with questions about the meaning of life and the nature of fulfillment. Some advocate for hedonistic pleasures, while others endorse a more ascetic lifestyle. Ultimately, each individual must embark on their own journey of self-discovery.`,
-        translation: `追求幸福是人类存在中无处不在的主题。历史上的哲学家们一直在努力解答关于人生意义和满足本质的问题。一些人主张享乐主义的乐趣，而另一些人则认可更为禁欲的生活方式。最终，每个人都必须踏上自己的自我发现之旅。`,
-        words: [
-          {
-            id: 'w31',
-            word: 'ubiquitous',
-            phonetic: '/juːˈbɪkwɪtəs/',
-            meaning: 'adj. 无处不在的，普遍的',
-            example: 'Smartphones have become ubiquitous in modern society.'
-          },
-          {
-            id: 'w32',
-            word: 'grapple',
-            phonetic: '/ˈɡræpl/',
-            meaning: 'v. 努力解决，搏斗',
-            example: 'Scientists grapple with complex problems daily.'
-          },
-          {
-            id: 'w33',
-            word: 'fulfillment',
-            phonetic: '/fʊlˈfɪlmənt/',
-            meaning: 'n. 满足，实现',
-            example: 'She found fulfillment in helping others.'
-          },
-          {
-            id: 'w34',
-            word: 'hedonistic',
-            phonetic: '/ˌhiːdəˈnɪstɪk/',
-            meaning: 'adj. 享乐主义的',
-            example: 'He rejected the hedonistic lifestyle.'
-          },
-          {
-            id: 'w35',
-            word: 'ascetic',
-            phonetic: '/əˈsetɪk/',
-            meaning: 'adj. 禁欲的，苦行的',
-            example: 'The monk led an ascetic life.'
-          },
-          {
-            id: 'w36',
-            word: 'embark',
-            phonetic: '/ɪmˈbɑːk/',
-            meaning: 'v. 开始，着手',
-            example: 'She embarked on a new career in technology.'
-          }
-        ]
-      },
-      {
-        id: 'section3-2',
-        title: 'Art and Expression',
-        subtitle: '艺术与表达',
-        audioUrl: MOCK_AUDIO,
-        backgroundImage: MOCK_IMAGES[0],
-        content: `Art serves as a conduit for human emotions and ideas. Throughout civilizations, artists have endeavored to capture the ephemeral beauty of life. Their works often transcend cultural boundaries, speaking to universal human experiences. The aesthetic appeal of art lies not merely in its visual splendor but in its ability to evoke profound emotional responses.`,
-        translation: `艺术是人类情感和思想的导管。在各个文明中，艺术家们都努力捕捉生命中短暂的美。他们的作品常常超越文化界限，讲述普遍的人类经历。艺术的美学吸引力不仅在于其视觉壮丽，还在于它唤起深刻情感反应的能力。`,
-        words: [
-          {
-            id: 'w37',
-            word: 'conduit',
-            phonetic: '/ˈkɒndjuɪt/',
-            meaning: 'n. 导管，渠道',
-            example: 'Music is a conduit for expressing emotions.'
-          },
-          {
-            id: 'w38',
-            word: 'endeavor',
-            phonetic: '/ɪnˈdevər/',
-            meaning: 'v. 努力，尽力',
-            example: 'We will endeavor to meet your expectations.'
-          },
-          {
-            id: 'w39',
-            word: 'ephemeral',
-            phonetic: '/ɪˈfemərəl/',
-            meaning: 'adj. 短暂的，转瞬即逝的',
-            example: 'Fame can be ephemeral in the entertainment industry.'
-          },
-          {
-            id: 'w40',
-            word: 'transcend',
-            phonetic: '/trænˈsend/',
-            meaning: 'v. 超越，胜过',
-            example: 'Great music transcends cultural boundaries.'
-          },
-          {
-            id: 'w41',
-            word: 'aesthetic',
-            phonetic: '/esˈθetɪk/',
-            meaning: 'adj. 美学的，审美的',
-            example: 'The building has great aesthetic appeal.'
-          },
-          {
-            id: 'w42',
-            word: 'evoke',
-            phonetic: '/ɪˈvəʊk/',
-            meaning: 'v. 唤起，引起',
-            example: 'The song evoked memories of my childhood.'
-          }
-        ]
-      }
-    ]
+    description: '高级词汇 - 待更新',
+    sections: []
   }
 ]
 
@@ -449,4 +516,3 @@ export const getSectionById = (sectionId: string) => {
   }
   return null
 }
-

@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "ielts-words-app",
   "description": "看故事背雅思单词小程序",
-  "appid": "wxf105b25da1a3ceca",
+  "appid": "wx45f4d77b8dd4400b",
   "setting": {
     "urlCheck": true,
     "es6": false,
@@ -53,5 +53,6 @@
     "ignore": [],
     "include": []
   },
-  "editorSetting": {}
+  "editorSetting": {},
+  "libVersion": "3.12.0"
 }
