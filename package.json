@@ -9,16 +9,17 @@
     "css": "less"
   },
   "scripts": {
-    "build:weapp": "taro build --type weapp",
-    "build:swan": "taro build --type swan",
-    "build:alipay": "taro build --type alipay",
-    "build:tt": "taro build --type tt",
-    "build:h5": "taro build --type h5",
-    "dev:weapp": "npm run build:weapp -- --watch",
-    "dev:swan": "npm run build:swan -- --watch",
-    "dev:alipay": "npm run build:alipay -- --watch",
-    "dev:tt": "npm run build:tt -- --watch",
-    "dev:h5": "npm run build:h5 -- --watch"
+    "build:weapp": "NODE_ENV=production taro build --type weapp",
+    "build:swan": "NODE_ENV=production taro build --type swan",
+    "build:alipay": "NODE_ENV=production taro build --type alipay",
+    "build:tt": "NODE_ENV=production taro build --type tt",
+    "build:h5": "NODE_ENV=production taro build --type h5",
+    "dev:weapp": "taro build --type weapp --watch",
+    "dev:swan": "taro build --type swan --watch",
+    "dev:alipay": "taro build --type alipay --watch",
+    "dev:tt": "taro build --type tt --watch",
+    "dev:h5": "taro build --type h5 --watch",
+    "prod:weapp": "npm run build:weapp"
   },
   "browserslist": [
     "last 3 versions",

@@ -15,9 +15,7 @@ export default defineConfig({
   plugins: [],
   defineConstants: {},
   copy: {
-    patterns: [
-      { from: 'src/assets/audio/', to: 'dist/assets/audio/' }
-    ],
+    patterns: [],
     options: {}
   },
   framework: 'react',

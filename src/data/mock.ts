@@ -50,7 +50,7 @@ export const mockParts: Part[] = [
         id: 'section1-1',
         title: 'The Mountain and the Sky',
         subtitle: '山与天空',
-        audioUrl: '/assets/audio/section-1.1.mp3',
+        audioUrl: 'https://cdn.jsdelivr.net/gh/waleiwalei/ietls-words-assets@main/audio/section-1.1.mp3',
         backgroundImage: SECTION_IMAGES.mountainAndSky,
         content: `The Mountain and the Sky
 
@@ -179,7 +179,7 @@ Dark clouds gathered. Lin Yuan learned that day that mountain [weather] could ch
         id: 'section1-2',
         title: 'The Storm',
         subtitle: '暴风雨',
-        audioUrl: '/assets/audio/section-1.2.mp3',
+        audioUrl: 'https://cdn.jsdelivr.net/gh/waleiwalei/ietls-words-assets@main/audio/section-1.2.mp3',
         backgroundImage: SECTION_IMAGES.storm,
         content: `The Storm
 
@@ -260,7 +260,7 @@ But the villagers didn't give up. They worked together to [upgrade] their defens
         id: 'section1-3',
         title: 'The Waters of Home',
         subtitle: '家乡的水',
-        audioUrl: '/assets/audio/section-1.3.mp3',
+        audioUrl: 'https://cdn.jsdelivr.net/gh/waleiwalei/ietls-words-assets@main/audio/section-1.3.mp3',
         backgroundImage: SECTION_IMAGES.watersOfHome,
         content: `The Waters of Home
 
@@ -335,7 +335,7 @@ That day, Lin Yuan understood that water connected everything on their [globe], 
         id: 'section2-1',
         title: 'Grandmother\'s Herb Garden',
         subtitle: '奶奶的草药园',
-        audioUrl: '/assets/audio/section-2.1.mp3',
+        audioUrl: 'https://cdn.jsdelivr.net/gh/waleiwalei/ietls-words-assets@main/audio/section-2.1.mp3',
         backgroundImage: SECTION_IMAGES.herbGarden,
         content: `Grandmother's Herb Garden
 
@@ -403,7 +403,7 @@ Lin Yuan learned to [classify] plants by their characteristics. Some could [repr
         id: 'section2-2',
         title: 'The Forest Classroom',
         subtitle: '森林课堂',
-        audioUrl: '/assets/audio/section-2.2.mp3',
+        audioUrl: 'https://cdn.jsdelivr.net/gh/waleiwalei/ietls-words-assets@main/audio/section-2.2.mp3',
         backgroundImage: SECTION_IMAGES.forestClassroom,
         content: `The Forest Classroom
 
