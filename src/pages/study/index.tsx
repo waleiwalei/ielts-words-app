@@ -1,4 +1,4 @@
-import { View, Text, Slider, ScrollView, Input } from '@tarojs/components'
+import { View, Text, Slider, ScrollView, Input, Image } from '@tarojs/components'
 import Taro, { useRouter } from '@tarojs/taro'
 import { useEffect, useState, useRef, useMemo } from 'react'
 import { getSectionById, Section } from '../../data/mock'
@@ -243,8 +243,20 @@ export default function Study() {
           {/* 英文段落 */}
           <View className='paragraphs-container'>
             {paragraphs.map((para, index) => (
-              <View key={index} className='paragraph-item'>
-                <ParagraphContent text={para} isEnglish={true} />
+              <View key={index}>
+                <View className='paragraph-item'>
+                  <ParagraphContent text={para} isEnglish={true} />
+                </View>
+                {/* 在第1个段落之后插入图片 */}
+                {index === 1 && (
+                  <View className='story-image-wrapper'>
+                    <Image 
+                      className='story-image'
+                      src={section.backgroundImage}
+                      mode='aspectFill'
+                    />
+                  </View>
+                )}
               </View>
             ))}
           </View>
